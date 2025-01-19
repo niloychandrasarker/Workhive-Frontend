@@ -4,12 +4,16 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { MixerHorizontalIcon } from "@radix-ui/react-icons";
+import {
+  MagnifyingGlassIcon,
+  MixerHorizontalIcon,
+} from "@radix-ui/react-icons";
 import { Divide } from "lucide-react";
 
-import React from "react";
+import React, { useState } from "react";
+import ProjectCard from "../Project/ProjectCard";
 
-const tags = [
+export const tags = [
   "all",
   "react",
   "next.js",
@@ -23,15 +27,17 @@ const tags = [
 ];
 
 const ProjectList = () => {
+  const [keyword, setKeyword] = useState("");
   const handleFilterChange = (section, value) => {
     console.log("value", value, section);
+  };
+  const handleSearchChange = (e) => {
+    setKeyword(e.target.value);
   };
 
   return (
     <>
-            
       <div className="relative px-5 lg:px-0 lg:flex gap-5 justify-center py-5">
-
         {/* Filter Section Start Here */}
 
         <section className="filterSection ">
@@ -45,12 +51,11 @@ const ProjectList = () => {
             {/* Category Section Start Here */}
             <CardContent className="mt-5">
               <ScrollArea className="space-y-7 h-[70vh]">
-
                 <div>
                   <h1 className="pb-3 text-gray-400 border-b">Category</h1>
                   <div className="pt-5">
                     <RadioGroup
-                    className="space-y-3 pt-5"
+                      className="space-y-3 pt-5"
                       defaultValue="all"
                       onValueChange={(value) =>
                         handleFilterChange("category", value)
@@ -84,7 +89,7 @@ const ProjectList = () => {
                   <h1 className="pb-3 text-gray-400 border-b">Tag</h1>
                   <div className="pt-5">
                     <RadioGroup
-                    className="space-y-3 pt-5"
+                      className="space-y-3 pt-5"
                       defaultValue="all"
                       onValueChange={(value) =>
                         handleFilterChange("tag", value)
@@ -108,10 +113,33 @@ const ProjectList = () => {
 
         {/* Filter Section End Here */}
 
-
         {/* ProjectList Section Start Here */}
 
-       
+        <section className="projectListSection w-full lg:w-[48rem]">
+          {/* Search Section Start Here */}
+          <div className="flex gap-2 items-center pb-5 justify-between">
+            <div className="relative p-0 w-full">
+              <Input
+                onChange={handleSearchChange}
+                placeholder="Search Project"
+                className="40% px-9"
+              />
+              <MagnifyingGlassIcon className="absolute top-3 left-4" />
+            </div>
+          </div>
+          {/* Search Section End Here */}
+
+          {/* project Show Section Start Here */}
+          <div>
+            <div className="space-y-5 min-h-[74]">
+              {keyword
+                ? [1, 1, 1].map((item) => <ProjectCard key={item} />)
+                : [1, 1, 1, 1, 1].map((item) => <ProjectCard key={item} />)}
+            </div>
+          </div>
+
+          {/* project Show Section Ennd Here */}
+        </section>
 
         {/* ProjectList Section End Here */}
       </div>
