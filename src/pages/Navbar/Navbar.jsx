@@ -12,12 +12,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { PersonIcon } from "@radix-ui/react-icons";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   return (
     <div className="border-b py-4 px-5 flex items-center justify-between">
       <div className="flex items-center gap-3">
-        <p className="cursor-pointer text-3xl">WorkHive</p>
+        <p onClick={() => navigate("/")} className="cursor-pointer text-3xl">
+          WorkHive
+        </p>
         <Dialog>
           <DialogTrigger>
             <Button variant="ghost">New Project</Button>
