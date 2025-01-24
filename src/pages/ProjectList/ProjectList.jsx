@@ -5,10 +5,10 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
+  CaretDownIcon, CaretUpIcon,
   MagnifyingGlassIcon,
   MixerHorizontalIcon,
 } from "@radix-ui/react-icons";
-import { Divide } from "lucide-react";
 
 import React, { useState } from "react";
 import ProjectCard from "../Project/ProjectCard";
@@ -28,28 +28,40 @@ export const tags = [
 
 const ProjectList = () => {
   const [keyword, setKeyword] = useState("");
+  const [openFilter, setOpenFilter] = useState(false);
   const handleFilterChange = (section, value) => {
     console.log("value", value, section);
   };
   const handleSearchChange = (e) => {
     setKeyword(e.target.value);
   };
+  const handleOpenFilter = () => {
+    console.log(openFilter)
+    setOpenFilter(!openFilter);
+  };
 
   return (
     <>
-      <div className="relative px-5 lg:px-0 lg:flex gap-5 justify-center py-5">
+      <div className="container relative px-5 md:px-0 md:flex gap-5 justify-center p-5">
         {/* Filter Section Start Here */}
 
         <section className="filterSection ">
           <Card className="p-5 sticky top-10">
-            <div className="flex justify-between lg:w-[20rem]">
-              <p className="text-xl -tracking-wider">filter</p>
-              <Button variant="ghost" size="icon">
+            <div className="flex justify-between md:w-[12rem] lg:w-[20rem]">
+              <p className="text-xl -tracking-wider">Filter</p>
+              {/* Desktop Filter Icon*/}
+              <Button className={"hidden md:flex"} variant="ghost" size="icon">
                 <MixerHorizontalIcon />
+              </Button>
+              {/*  Mobile Filter Icon*/}
+              <Button className={"md:hidden"} variant="ghost" size="icon" onClick={handleOpenFilter} >
+                {
+                  openFilter ? <CaretUpIcon  /> : <CaretDownIcon  />
+                }
               </Button>
             </div>
             {/* Category Section Start Here */}
-            <CardContent className="mt-5">
+            <CardContent className={`${openFilter ? "max-h-[500px]" : "max-h-0 p-0"} md:max-h-full overflow-hidden  transform transition-all duration-300 ease-in-out`}>
               <ScrollArea className="space-y-7 h-[70vh]">
                 <div>
                   <h1 className="pb-3 text-gray-400 border-b">Category</h1>
@@ -115,9 +127,9 @@ const ProjectList = () => {
 
         {/* ProjectList Section Start Here */}
 
-        <section className="projectListSection w-full lg:w-[48rem]">
+        <section className="projectListSection w-full ">
           {/* Search Section Start Here */}
-          <div className="flex gap-2 items-center pb-5 justify-between">
+          <Card className="mt-5 md:mt-0 flex gap-2 items-center mb-5 justify-between">
             <div className="relative p-0 w-full">
               <Input
                 onChange={handleSearchChange}
@@ -126,15 +138,15 @@ const ProjectList = () => {
               />
               <MagnifyingGlassIcon className="absolute top-3 left-4" />
             </div>
-          </div>
+          </Card>
           {/* Search Section End Here */}
 
           {/* project Show Section Start Here */}
           <div>
-            <div className="space-y-5 min-h-[74]">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 min-h-[74]">
               {keyword
                 ? [1, 1, 1].map((item) => <ProjectCard key={item} />)
-                : [1, 1, 1, 1, 1].map((item) => <ProjectCard key={item} />)}
+                : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map((item) => <ProjectCard key={item} />)}
             </div>
           </div>
 
