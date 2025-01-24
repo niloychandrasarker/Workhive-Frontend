@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,9 +13,36 @@ import { PlusIcon } from "@radix-ui/react-icons";
 import React from "react";
 import InviterUserForm from "./InviterUserForm";
 import IssueList from "./IssueList";
-import ChatBox from "./ChatBox";
 import FloatingChat from "@/pages/ProjectDetails/FloatingChat.jsx";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card.jsx";
+import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from "@/components/ui/tooltip.jsx";
+import {Separator} from "@/components/ui/separator.jsx";
+const memberList = [
+  {
+    name: "Niloy Chandra Sarker",
+    role: "Team Leader",
+    initial: "N",
+    profilePicture: "https://images.pexels.com/photos/1270076/pexels-photo-1270076.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    name: "Arafat Hossain",
+    role: "Software Engineer",
+    initial: "A",
+    profilePicture: "https://images.pexels.com/photos/11650772/pexels-photo-11650772.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    name: "Rakib Hossain",
+    role: "Junior Software Engineer",
+    initial: "R",
+    profilePicture: "https://images.pexels.com/photos/804009/pexels-photo-804009.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {name: "Jhon Doe",
+    role: "Software Engineer",
+    initial: "R",
+    profilePicture: "https://images.pexels.com/photos/1812634/pexels-photo-1812634.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
 
+  }
+]
 const ProjectDetails = () => {
   const handleProjectInvitation = () => {};
 
@@ -23,78 +50,87 @@ const ProjectDetails = () => {
     <>
       <FloatingChat/>
       {/* Team Leader and Team member and project details and TaskList section Start Here*/}
-      <div className=" mt-5 lg:px-10">
+      <div className="container mt-5 lg:px-10">
 
         <div className="lg:flex gap-5 justify-between pb-4">
+
           <ScrollArea className="h-screen w-full pr-2">
             <div className="text-gray-400 pb-10 w-full">
-              <h1 className="text-xl font-semibold pb-5">
-                Create Ecommerce Website Using React
-              </h1>
+              <Card>
+                <CardHeader>
+                  <CardTitle className={"text-2xl"}>Create Ecommerce Website Using React</CardTitle>
+                  <CardDescription> Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Esse, nobis! Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Esse, nobis! Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Esse, nobis! Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Esse, nobis!</CardDescription>
+                </CardHeader>
+                <CardContent className={"text-sm"}>
+                  <p className=""><b>Project Lead :</b> Niloy Chandra Sarker</p>
+                  <div className="flex items-center mt-5">
+                    <p className="mr-8 font-bold">Members :</p>
+                    <div className="flex items-center">
+                      {memberList.map((member, index) => (
+                          <TooltipProvider key={index}>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <Avatar size="sm" className="cursor-pointer -ml-4 border border-violet-600 w-8 h-8">
+                                  <AvatarImage src={member.profilePicture} alt={member.name}/>
+                                  <AvatarFallback>N</AvatarFallback>
+                                </Avatar>
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>{member.name}</p>
+                                <p>{member.role}</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
 
-              <div className="space-y-5 pb-10 text-lg">
-                <p className="w-full md:max-w-lg lg:max-w-xl ">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Esse, nobis!
-                </p>
-
-                <div className="flex">
-                  <p className="w-36">Project Lead :</p>
-                  <p>Niloy</p>
-                </div>
-
-                <div className="flex">
-                  <p className="w-36">Members :</p>
-                  <div className="flex items-center gap-2">
-                    {[1, 1, 1, 1].map((item) => (
-                      <Avatar className="cursor-pointer" key={item}>
-                        <AvatarFallback>N</AvatarFallback>
-                      </Avatar>
-                    ))}
+                      ))}
+                    </div>
+                    {/* Invite Section Start Here */}
+                    <Dialog>
+                      <DialogTrigger>
+                        <DialogClose>
+                          <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={handleProjectInvitation}
+                              className="ml-2"
+                          >
+                            <span>invite</span>
+                            <PlusIcon className="w-3 h-3"/>
+                          </Button>
+                        </DialogClose>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>Invite User</DialogHeader>
+                        <InviterUserForm/>
+                      </DialogContent>
+                    </Dialog>
                   </div>
-                  {/* Invite Section Start Here */}
-                  <Dialog>
-                    <DialogTrigger>
-                      <DialogClose>
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          onClick={handleProjectInvitation}
-                          className="ml-2"
-                        >
-                          <span>invite</span>
-                          <PlusIcon className="w-3 h-3" />
-                        </Button>
-                      </DialogClose>
-                    </DialogTrigger>
-                    <DialogContent>
-                      <DialogHeader>Invite User</DialogHeader>
-                      <InviterUserForm />
-                    </DialogContent>
-                  </Dialog>
-                </div>
+                  <p className="mt-5"><b>Category: </b> Fullstack</p>
+                  <p className="mt-5"><b>Status: </b> <Badge>Active</Badge></p>
+                </CardContent>
+              </Card>
 
-                {/* Invite Section End Here */}
-
-                <div className="flex">
-                  <p className="w-36">Category :</p>
-                  <p>Fullstake</p>
-                </div>
-
-                <div className="flex">
-                  <p className="w-36">Status :</p>
-                  <Badge>Niloy</Badge>
-                </div>
-              </div>
               {/* TaskList Section Start Here */}
-              <section>
-                <p className="py-5 border-b text-lg -tracking-wider">Tasks</p>
-                <div className="lg:flex md:flex gap-3 justify-between py-5">
-                  <IssueList status="pending" title="Todo List" />
-                  <IssueList status="in_progress" title="In Progress" />
-                  <IssueList status="done" title="Done" />
-                </div>
-              </section>
+              <Card className=" mt-5">
+                {/* Section Header */}
+                <CardHeader>
+                  <h2 className="text-2xl font-bold tracking-wide"> Tasks</h2>
+                </CardHeader>
+                <Separator/>
+                <CardContent className={"mt-5"}>
+                  <div className="grid  lg:grid-cols-3 md:grid-cols-2  grid-cols-1 gap-4">
+                    <IssueList status="pending" title="Todo List"/>
+                    <IssueList status="in_progress" title="In Progress"/>
+                    <IssueList status="in_progress" title="In Progress"/>
+                  </div>
+                </CardContent>
+                {/* Task Lists */}
+              </Card>
+
               {/* TaskList Section End Here */}
             </div>
           </ScrollArea>
