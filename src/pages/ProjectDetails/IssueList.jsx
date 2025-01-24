@@ -22,7 +22,7 @@ const IssueList = ({ title, status }) => {
   return (
     <div>
       <Dialog>
-        <Card className="w-full md:w-[300px] lg:w-[310px]">
+        <Card className="w-full">
           <CardHeader>
             <CardTitle>{title}</CardTitle>
           </CardHeader>
