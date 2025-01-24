@@ -6,6 +6,25 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+	  container: {
+		  center: true, // Automatically centers the container horizontally
+		  padding: {
+			  DEFAULT: '1rem', // Default padding for all screen sizes
+			  sm: '2rem', // Small screens (e.g., mobile)
+			  md: '3rem', // Medium screens (e.g., tablets)
+			  lg: '4rem', // Large screens (e.g., desktops)
+			  xl: '5rem', // Extra-large screens
+			  '2xl': '6rem', // 2XL screens
+		  },
+		  screens: {
+			  // sm: '640px', // Matches Tailwind's default `sm` breakpoint
+			  md: '640px', // Matches Tailwind's default `md` breakpoint
+			  lg: '768px', // Matches Tailwind's default `lg` breakpoint
+			  xl: '1024px', // Matches Tailwind's default `xl` breakpoint
+			  '2xl': '1280px', // Matches Tailwind's default `2xl` breakpoint
+			  // You can add custom breakpoints here if needed
+		  },
+	  },
   	extend: {
   		borderRadius: {
   			lg: 'var(--radius)',
