@@ -29,12 +29,8 @@ const IssueDetails = () => {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="flex md:flex-row flex-col-reverse justify-between gap-5">
-            <ScrollArea className="h-[68vh] lg:w-9/12 md:w-8/12 w-full">
-              <div>
-                <h1 className="text-lg font-semibold text-gray-400">
-
-                </h1>
+        <div className="flex md:flex-row flex-col-reverse justify-between gap-5 w-full">
+          <div className="h-[68vh] lg:w-9/12 md:w-8/12 w-full">
                 <div className="py-5">
                   <h className="font-semibold text-gray-400">Description</h>
                   <p className="text-gray-400 text-sm mt-3">
@@ -47,7 +43,7 @@ const IssueDetails = () => {
                 </div>
                 <div className="mt-5">
                   <h1 className="pb-3">Activity</h1>
-                  <Tabs defaultValue="comments" className="w-[400px]">
+                  <Tabs defaultValue="comments" >
                     <TabsList className="mb-5">
                       <TabsTrigger value="all">All</TabsTrigger>
                       <TabsTrigger value="comments">Comments</TabsTrigger>
@@ -70,11 +66,11 @@ const IssueDetails = () => {
                     </TabsContent>
                   </Tabs>
                 </div>
-              </div>
-            </ScrollArea>
+          </div>
+
             <div className="lg:w-3/12 md:w-4/12 w-full space-y-2">
               <Select onValueChange={handleUpdateIssueStatus}>
-                <SelectTrigger className="w-[180px]">
+                <SelectTrigger className="w-full">
                   <SelectValue placeholder="To Do"/>
                 </SelectTrigger>
                 <SelectContent>
