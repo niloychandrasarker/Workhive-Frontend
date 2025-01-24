@@ -14,16 +14,19 @@ import React from "react";
 import InviterUserForm from "./InviterUserForm";
 import IssueList from "./IssueList";
 import ChatBox from "./ChatBox";
+import FloatingChat from "@/pages/ProjectDetails/FloatingChat.jsx";
 
 const ProjectDetails = () => {
   const handleProjectInvitation = () => {};
 
   return (
     <>
+      <FloatingChat/>
       {/* Team Leader and Team member and project details and TaskList section Start Here*/}
-      <div className="mt-5 lg:px-10">
+      <div className=" mt-5 lg:px-10">
+
         <div className="lg:flex gap-5 justify-between pb-4">
-          <ScrollArea className="h-screen lg:w-[68%] pr-2">
+          <ScrollArea className="h-screen w-full pr-2">
             <div className="text-gray-400 pb-10 w-full">
               <h1 className="text-xl font-semibold pb-5">
                 Create Ecommerce Website Using React
@@ -95,12 +98,8 @@ const ProjectDetails = () => {
               {/* TaskList Section End Here */}
             </div>
           </ScrollArea>
-          {/* Chat Box Section Start Here */}
-          <div className="lg:w-[30%] rounded-md sticky right-5 top-10">
-            <ChatBox />
-          </div>
-          {/* Chat Box Section End Here */}
         </div>
+
       </div>
       {/* Team Leader and Team member and project details and TaskList section Start Here*/}
     </>
