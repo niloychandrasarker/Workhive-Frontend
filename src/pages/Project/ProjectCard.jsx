@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 const ProjectCard = () => {
   const navigate = useNavigate();
   return (
-    <Card className="p-5 w-full lg:max-w-3xl">
+    <Card className="p-5 w-full ">
       <div className="space-y-5">
         <div className="space-y-2">
           <div className="flex justify-between">
