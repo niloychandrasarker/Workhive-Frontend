@@ -35,7 +35,7 @@ const freePlan = [
 
 const Subscription = () => {
   return (
-    <div className="p-10">
+    <div className="md:p-10 p:5">
       <h1 className="text-5xl font-semibold py-5 text-center">Pricing</h1>
       <div className="flex flex-col lg:flex-row justify-center items-center gap-9">
         <SubscriptionCard
