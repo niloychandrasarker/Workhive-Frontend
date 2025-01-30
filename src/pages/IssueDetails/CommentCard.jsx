@@ -1,22 +1,37 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { deleteComment } from "@/Redux/Comment/Action";
+import { TrashIcon } from "@radix-ui/react-icons";
 import React from "react";
+import { useDispatch } from "react-redux";
 
-const CommentCard = () => {
+const CommentCard = ({ item }) => {
+  const dispatch = useDispatch();
+  const handleDeleteComment = () => {
+    dispatch(deleteComment(item.id));
+  };
   return (
     <div className="flex justify-between">
       <div className="flex items-center gap-4">
         <Avatar>
-          <AvatarFallback>N</AvatarFallback>
+          <AvatarFallback>{item.user.fullName[0]}</AvatarFallback>
         </Avatar>
 
         <div className="space-y-1">
-          <p>Code with niloy</p>
-          <p> how much work is pending</p>
+          <p>{item.user.fullName}</p>
+          <p>{item.content}</p>
         </div>
       </div>
 
-      <Button className="rounded-full" variant="ghost" size="icon"></Button>
+      <Button
+        onClick={handleDeleteComment}
+        className="rounded-full"
+        variant="ghost"
+        size="icon"
+      >
+        <TrashIcon />
+      </Button>
     </div>
   );
 };

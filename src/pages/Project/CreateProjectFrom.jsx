@@ -19,8 +19,12 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { tags } from "../ProjectList/ProjectList";
 import { Cross1Icon } from "@radix-ui/react-icons";
+import { useDispatch } from "react-redux";
+import { createProject } from "@/Redux/Project/Action";
 
 const CreateProjectFrom = () => {
+  const dispatch = useDispatch();
+
   const handleTagsChange = (newValue) => {
     const currentTags = form.getValues("tags");
 
@@ -42,6 +46,7 @@ const CreateProjectFrom = () => {
   });
 
   const onSubmit = (data) => {
+    dispatch(createProject(data));
     console.log("Create Project Data", data);
   };
   return (

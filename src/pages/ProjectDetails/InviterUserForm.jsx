@@ -8,9 +8,14 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { inviteToProject } from "@/Redux/Project/Action";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
 const InviterUserForm = () => {
+  const dispatch = useDispatch();
+  const { id } = useParams();
   const form = useForm({
     // resolver:zod
     defaultValues: {
@@ -19,6 +24,7 @@ const InviterUserForm = () => {
   });
 
   const onSubmit = (data) => {
+    dispatch(inviteToProject({ email: data.email, projectId: id }));
     console.log("Create Project Data", data);
   };
   return (

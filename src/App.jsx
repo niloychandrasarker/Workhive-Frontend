@@ -7,11 +7,28 @@ import ProjectDetails from "./pages/ProjectDetails/ProjectDetails";
 import IssueDetails from "./pages/IssueDetails/IssueDetails";
 import Subscription from "./pages/Subcription/Subscription";
 import Auth from "./pages/Auth/Auth";
+import CreateProjectFrom from "./pages/Project/CreateProjectFrom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getUser } from "./Redux/Auth/Action";
+import { fetchProjects } from "./Redux/Project/Action";
+import UpgradeSuccess from "./pages/Subcription/UpgradeSuccess";
+import AcceptInvitation from "./pages/Project/AcceptInvitation";
 
 function App() {
+  const dispatch = useDispatch();
+  const { auth } = useSelector((store) => store);
+
+  useEffect(() => {
+    dispatch(getUser());
+    dispatch(fetchProjects({}));
+  }, [auth.jwt]);
+
+  console.log(auth);
+
   return (
     <>
-      {true ? (
+      {auth.user ? (
         <div>
           <Navbar />
           <Routes>
@@ -22,6 +39,8 @@ function App() {
               element={<IssueDetails />}
             />
             <Route path="/upgrade_plan" element={<Subscription />} />
+            <Route path="/upgrade_plan/success" element={<UpgradeSuccess />} />
+            <Route path="/accept_invitation" element={<AcceptInvitation />} />
           </Routes>
         </div>
       ) : (
