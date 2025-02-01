@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const API_BASE_URL =
-  "https://workhive-backend-production.up.railway.app/";
+  "https://personal-agnella-devwithniloy-6b987210.koyeb.app/";
 
 const api = axios.create({ baseURL: API_BASE_URL });
 
