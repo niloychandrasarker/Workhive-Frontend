@@ -15,6 +15,9 @@ export const register = (userData) => async (dispatch) => {
 
   try {
     const { data } = await axios.post(`${API_BASE_URL}/auth/signup`, userData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
       withCredentials: true,
     });
     if (data.jwt) {
