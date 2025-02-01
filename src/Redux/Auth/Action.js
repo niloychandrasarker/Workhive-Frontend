@@ -14,7 +14,9 @@ export const register = (userData) => async (dispatch) => {
   dispatch({ type: REGISTER_REQUEST });
 
   try {
-    const { data } = await axios.post(`${API_BASE_URL}/auth/signup`, userData);
+    const { data } = await axios.post(`${API_BASE_URL}/auth/signup`, userData, {
+      withCredentials: true,
+    });
     if (data.jwt) {
       localStorage.setItem("jwt", data.jwt);
       dispatch({ type: REGISTER_SUCCESS, payload: data });
