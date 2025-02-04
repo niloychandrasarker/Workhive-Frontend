@@ -97,9 +97,18 @@ const Navbar = () => {
         <div className="flex flex-col p-4 gap-3 opacity-100 transition-opacity duration-300 ease-in-out">
           <div className="flex justify-between items-center">
             <p>{auth.user?.fullName}</p>
-            <Button size="icon" className="rounded-full">
-              <PersonIcon />
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                <DropdownMenuContent onClick={handleLogout}>
+                  Logout
+                </DropdownMenuContent>
+              </DropdownMenuTrigger>
+              <DropdownMenuTrigger>
+                <Button size="icon" className="rounded-full">
+                  <PersonIcon />
+                </Button>
+              </DropdownMenuTrigger>
+            </DropdownMenu>
           </div>
           <Separator />
           <ul className="flex flex-col gap-3 items-start w-full">
