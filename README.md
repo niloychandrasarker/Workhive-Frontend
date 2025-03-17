@@ -2,7 +2,7 @@
 
 **A powerful project management system built with React & Spring Boot**  
 
-![Workhive Banner](screenshots/banner.png)  
+![Workhive Banner](src/assets/screenshots/banner.png) 
 
 ## 📌 Overview  
 Workhive is a **full-stack project management platform** designed to help teams collaborate efficiently. Whether you're an experienced developer or a beginner, **Workhive** provides the perfect environment to **manage projects, track progress, and collaborate seamlessly**.  
@@ -17,23 +17,33 @@ Workhive is a **full-stack project management platform** designed to help teams 
 
 ## 🖼️ Screenshots  
 
+### 🔹 Sign In  
+![Sign In](src/assets/screenshots/signin.png)  
+
+### 🔹 Sign Up  
+![Sign Up](src/assets/screenshots/Sign%20UP.png)  
+
 ### 🔹 Dashboard  
 ![Dashboard](src/assets/screenshots/Dashboard.png)  
 
 ### 🔹 Project Creation  
 ![Create Project](src/assets/screenshots/create%20project.png)  
 
+### 🔹 Project Details 
+![Create Project](src/assets/screenshots/projectdetails.png)  
+
 ### 🔹 User Invitation  
 ![Invite](src/assets/screenshots/invite.png)  
+
+### 🔹 Chating
+![Create Project](src/assets/screenshots/Chating.png)  
 
 ### 🔹 Issue Details  
 ![Issue Details](src/assets/screenshots/issue%20details.png)  
 
-### 🔹 Sign Up  
-![Sign Up](src/assets/screenshots/Sign%20UP.png)  
+### 🔹 Upgrade
+![Issue Details](src/assets/screenshots/upgrade.png)  
 
-### 🔹 Sign In  
-![Sign In](src/assets/screenshots/signin.png)  
 
 ## 🛠 Technology Stack  
 
